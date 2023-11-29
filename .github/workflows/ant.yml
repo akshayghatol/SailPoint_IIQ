@@ -25,6 +25,5 @@ jobs:
       run: echo "SPTARGET=sandbox" >> $GITHUB_ENV
     - name: Copy the Binaries
       run: cp "Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/identityiq-8.3.zip" "Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/identityiq-8.3.zip"
-        done
     - name: Build with Ant
       run: ant -noinput -buildfile ssb-v7.0.2/build.xml
