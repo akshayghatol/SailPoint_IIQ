@@ -25,12 +25,12 @@ jobs:
       run: echo "SPTARGET=sandbox" >> $GITHUB_ENV
     - name: Copy the Binaries
       run: |
-        find ./Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/ -type f -name "identityiq-8.3.zip" | while read fname; do
+        find Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/ -type f -name "identityiq-8.3.zip" | while read fname; do
           dirname=`dirname "$fname"`
           foldername=`basename "$dirname"`
           filename=`basename "$fname"`
           newname=`echo "$dirname" | sed -e "s/ /_/g"`
-          cp "${dirname}/$filename" "./Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/${foldername}.zip"
+          cp "${dirname}/$filename" "Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/${foldername}.zip"
         done
     - name: Build with Ant
       run: ant -noinput -buildfile ssb-v7.0.2/build.xml
