@@ -23,7 +23,9 @@ jobs:
         distribution: 'temurin'
     - name: Set environment varaible
       run: echo "SPTARGET=sandbox" >> $GITHUB_ENV
-    - name: Copy the Binaries
+    - name: Copy the 8.3 GA
       run: cp "/Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/identityiq-8.3.zip" "/Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/identityiq-8.3.zip"
+    - name: Copy the 8.3 patch
+      run: cp "/Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/patch/identityiq-8.3p3.jar" "/Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/patch/identityiq-8.3p3.jar"
     - name: Build with Ant
       run: ant -noinput -buildfile ssb-v7.0.2/build.xml
