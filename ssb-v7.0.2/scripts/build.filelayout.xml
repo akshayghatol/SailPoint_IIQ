@@ -78,28 +78,6 @@
                             </fileset>
                         </unzip>
                         <echo>Overlaying efixes from /base/efix/${IIQVersion}${IIQPatchLevel}</echo>
-
-                        <orderedFileListing folderPath="base/efix/${IIQVersion}${IIQPatchLevel}"
-                                            fileExtensions=".zip,.jar" property="efixFiles"/>
-
-                        <if>
-                            <and>
-                                <not>
-                                    <equals arg1="${efixFiles}" arg2=""/>
-                                </not>
-                                <isset property="efixFiles"/>
-                            </and>
-                            <then>
-                                <echo>Found efix(es): ${efixFiles}</echo>
-                                <for list="${efixFiles}" param="efixFile">
-                                    <sequential>
-                                        <echo>Applying efix: @{efixFile}</echo>
-                                        <unzip src="@{efixFile}" dest="${build.iiqBinaryExtract}"/>
-                                    </sequential>
-                                </for>
-                            </then>
-                        </if>
-
                     </try>
                     <catch>
                         <echo>Critical failure while extracting core binaries. Make sure required files exit,
