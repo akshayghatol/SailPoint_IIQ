@@ -1,0 +1,31 @@
+# This workflow will build a Java project with Ant
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-ant
+
+name: SailPoint CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    - name: Set environment varaible
+      run: echo "SPTARGET=develop" >> $GITHUB_ENV
+    - name: Copy the 8.3 GA
+      run: cp "/Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/identityiq-8.3.zip" "/Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/ga/identityiq-8.3.zip"
+    - name: Copy the 8.3 patch
+      run: cp "/Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/patch/identityiq-8.3p3.jar" "/Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/patch/identityiq-8.3p3.jar"
+    - name: Build with Ant
+      run: ant -noinput -buildfile ssb-v7.0.2/build.xml
