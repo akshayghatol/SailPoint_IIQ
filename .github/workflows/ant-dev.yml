@@ -29,3 +29,13 @@ jobs:
       run: cp "/Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/patch/identityiq-8.3p3.jar" "/Users/akshayghatol/Documents/SailPoint_IIQ/actions-runner/_work/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/base/patch/identityiq-8.3p3.jar"
     - name: Build with Ant
       run: ant -noinput -buildfile ssb-v7.0.2/build.xml
+    - name: deploy to Tomcat - Server 1
+      run: curl -v -u <username:password> -T /Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/build/identityiq.war '<tomcat manager url - server1>?path=/identityiq' 
+    - name: deploy to Tomcat - Server 2
+      run: curl -v -u <username:password> -T /Users/akshayghatol/Documents/SailPoint_IIQ/SailPoint_IIQ/ssb-v7.0.2/build/identityiq.war '<tomcat manager url - server2>?path=/identityiq' 
+    - name: restart Tomcat - Server 1
+      run: curl -v -u <username:password> '<tomcat manager url - server2/reload>?path=/identityiq'
+    - name: restart Tomcat - Server 2
+      run: curl -v -u <username:password> '<tomcat manager url - server2/reload>?path=/identityiq' 
+      
+      
